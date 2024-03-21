@@ -26,13 +26,13 @@ export default function Hero() {
       <div className='hero__image-container'>
         <div className='hero__image'>
           <Image
-            src='/hero.webp'
+            src='/hero.png'
             alt='hero'
             fill
             className='object-contain transform scale-x-[-1]'
           />
-          <div className='hero__image-overlay'> </div>
         </div>
+        <div className='hero__image-overlay'> </div>
       </div>
     </div>
   );
