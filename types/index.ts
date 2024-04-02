@@ -29,3 +29,11 @@ export type CarProps = {
   transmission: string;
   year: number;
 };
+
+export type FilterProps = {
+  manufacturer: string;
+  year: number;
+  fuel: string;
+  limit: number;
+  model: string;
+};
