@@ -47,3 +47,8 @@ export type CustomFilterProps = {
   title: string;
   options: OptionProps[];
 };
+
+export type PaginationProps = {
+  pageNumber: number;
+  isNext: boolean;
+};

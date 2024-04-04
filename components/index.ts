@@ -8,6 +8,8 @@ import CustomFilter from './CustomFilter';
 import SearchManufacturer from './SearchManufacturer';
 import CarCard from './CarCard';
 import CarDetails from './CarDetails';
+import ShowMore from './ShowMore';
+import ShowLess from './ShowLess';
 
 export {
   Hero,
@@ -20,4 +22,6 @@ export {
   SearchManufacturer,
   CarCard,
   CarDetails,
+  ShowMore,
+  ShowLess,
 };
