@@ -8,8 +8,8 @@ import { SearchManufacturerProps } from '@/types';
 import { manufacturers } from '@/app/constants';
 
 export default function SearchManufacturer({
-  manufacturer,
-  setManufacturer,
+  selected,
+  setSelected,
 }: SearchManufacturerProps) {
   const [query, setQuery] = useState('');
 
@@ -25,7 +25,7 @@ export default function SearchManufacturer({
 
   return (
     <div className='search-manufacturer'>
-      <Combobox value={manufacturer} onChange={setManufacturer}>
+      <Combobox value={selected} onChange={setSelected}>
         <div className='relative w-full'>
           <Combobox.Button className='absolute top-[14px] bg-transparent border-none'>
             <Image

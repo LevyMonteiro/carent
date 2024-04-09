@@ -11,8 +11,8 @@ export type CustomButtonProps = {
 };
 
 export type SearchManufacturerProps = {
-  manufacturer: string;
-  setManufacturer: (manufacturer: string) => void;
+  selected: string;
+  setSelected: (arg: string) => void;
 };
 
 export type CarProps = {
@@ -44,11 +44,12 @@ export type OptionProps = {
 };
 
 export type CustomFilterProps = {
-  title: string;
   options: OptionProps[];
+  setFilter: (filter: any) => void;
 };
 
 export type PaginationProps = {
   pageNumber: number;
   isNext: boolean;
+  setLimit: (newLimit: number) => void;
 };

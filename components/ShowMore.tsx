@@ -1,22 +1,18 @@
 'use client';
 
 import { PaginationProps } from '@/types';
-import { useRouter } from 'next/navigation';
 import CustomButton from './CustomButton';
-import { updateSearchParams } from '@/utils';
 
-const ShowMore = ({ pageNumber, isNext }: PaginationProps) => {
-  const router = useRouter();
-
+const ShowMore = ({ pageNumber, isNext, setLimit }: PaginationProps) => {
   const handleNavigation = () => {
-    const newLimit = (pageNumber + 2) * 10;
-    const newPathName = updateSearchParams('limit', `${newLimit}`);
+    const newLimit = (pageNumber + 1) * 8;
 
-    router.push(newPathName);
+    console.log(newLimit);
+    setLimit(newLimit);
   };
 
   return (
-    <div className='w-full flex-center gap-5 mt-10 inline'>
+    <div className='w-full flex-center gap-5 mt-10'>
       {!isNext && (
         <CustomButton
           title='Show More'

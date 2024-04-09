@@ -1,20 +1,14 @@
 'use client';
 
 import { PaginationProps } from '@/types';
-import { useRouter } from 'next/navigation';
 import CustomButton from './CustomButton';
-import { updateSearchParams } from '@/utils';
-import router from 'next/router';
 
-const ShowLess = ({ pageNumber, isNext }: PaginationProps) => {
-  const router = useRouter();
-
+const ShowLess = ({ pageNumber, isNext, setLimit }: PaginationProps) => {
   const handleNavigation = () => {
-    const newLimit = (pageNumber - 2) * 10;
+    const newLimit = (pageNumber - 1) * 8;
 
-    const newPathName = updateSearchParams('limit', `${newLimit}`);
-
-    router.push(newPathName);
+    console.log(newLimit);
+    setLimit(newLimit);
   };
 
   return (

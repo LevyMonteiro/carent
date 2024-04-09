@@ -1,3 +1,4 @@
+'use client';
 import {
   CarCard,
   CustomFilter,
@@ -7,19 +8,49 @@ import {
   ShowMore,
 } from '@/components';
 import { fetchCars } from '@/utils';
-import Image from 'next/image';
 import { fuels, yearsOfProduction } from './constants';
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { CarProps } from '@/types';
 
-export default async function Home({ searchParams }) {
-  const allCars = await fetchCars({
-    manufacturer: searchParams.manufacturer || '',
-    year: searchParams.year || 2022,
-    fuel: searchParams.fuel || '',
-    limit: searchParams.limit || 10,
-    model: searchParams.model || '',
-  });
+export default function Home() {
+  const [allCars, setAllCars] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
+  //  search states
+  const [manufacturer, setManufacturer] = useState('');
+  const [model, setModel] = useState('');
+
+  // filter states
+  const [fuel, setFuel] = useState('');
+  const [year, setYear] = useState(2023);
+
+  // pagination states
+  const [limit, setLimit] = useState(8);
+
+  const getCars = async () => {
+    setLoading(true);
+
+    try {
+      const result = await fetchCars({
+        manufacturer: manufacturer || '',
+        year: year,
+        fuel: fuel || '',
+        limit: limit || 8,
+        model: model || '',
+      });
+
+      setAllCars(result);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getCars();
+  }, [fuel, year, manufacturer, model, limit]);
 
   return (
     <main className='overflow-hidden'>
@@ -32,36 +63,59 @@ export default async function Home({ searchParams }) {
         </div>
 
         <div className='home__filters'>
-          <SearchBar />
+          <SearchBar setManufacturer={setManufacturer} setModel={setModel} />
 
           <div className='home__filter-container'>
-            <CustomFilter title='fuel' options={fuels} />
-            <CustomFilter title='year' options={yearsOfProduction} />
+            <CustomFilter options={fuels} setFilter={setFuel} />
+            <CustomFilter options={yearsOfProduction} setFilter={setYear} />
           </div>
         </div>
 
-        {!isDataEmpty ? (
+        {allCars.length > 0 ? (
           <section>
             <div className='home__cars-wrapper'>
-              {allCars?.map((car) => (
-                <CarCard car={car} key={car} />
+              {allCars?.map((car: CarProps) => (
+                <CarCard
+                  car={car}
+                  key={
+                    car.model +
+                    car.city_mpg +
+                    car.displacement +
+                    car.cylinders +
+                    car.year +
+                    car.highway_mpg +
+                    car.combination_mpg
+                  }
+                />
               ))}
             </div>
-
+            {loading && (
+              <div className='mt-16 w-full felx-center'>
+                <Image
+                  src='/loader.svg'
+                  alt='loader'
+                  width={50}
+                  height={50}
+                  className='object-contain'
+                />
+              </div>
+            )}
             <ShowMore
-              pageNumber={(searchParams.limit || 10) / 10}
-              isNext={(searchParams.limit || 10) > allCars.length}
+              pageNumber={limit / 8}
+              isNext={limit > allCars.length}
+              setLimit={setLimit}
             />
 
             <ShowLess
-              pageNumber={(searchParams.limit || 10) / 10}
-              isNext={(searchParams.limit || 10) <= 10}
+              pageNumber={limit / 8}
+              isNext={limit <= 8}
+              setLimit={setLimit}
             />
           </section>
         ) : (
           <div className='home__error-container'>
             <h2 className='text-black text-xl font-bold'>Oops, no results</h2>
-            <p>{allCars?.message}</p>
+            {/* <p>{allCars?.message}</p> */}
           </div>
         )}
       </div>
