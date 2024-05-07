@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CARENT
+
+## About
+
+This project is a car rental dealership landing page built with Next.js on top of React.
+
+It features modern concepts such as pagination, a search engine with filters, and API consumption.
+
+The design aims to be intuitive, providing users with a seamless experience.
 
 ## Getting Started
 
-First, run the development server:
+To view the website, simply visit the live URL <a href="https://carent-levymonteiro.vercel.app/" target="_blank">here</a>.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+If you'd like to run the website locally on your machine, you can do so by following these steps:
+
+Clone the repository to your local machine.
+
+```
+  git clone git@github.LevyMonteiro/carent.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Change to directory.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+  cd carent
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Install the dependecies.
 
-## Learn More
+```
+  npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+Run locally.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+  npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Built With
 
-## Deploy on Vercel
+This website was built using the following technologies:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<ul>
+<li><a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML" target="_blank">HTML</a></li>
+<li><a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS" target="_blank">CSS</a></li>
+<li><a href="https://react.dev/" target="_blank">React</a></li>
+<li><a href="https://nextjs.org/" target="_blank">Next.js</a></li>
+<li><a href="https://typescriptlang.org/" target="_blank">Typescript</a></li>
+<li><a href="https://tailwindcss.com/" target="_blank">Tailwind</a></li>
+<li><a href="https://prettier.io/" target="_blank">Prettier</a></li>
+<li><a href="https://eslint.org/" target="_blank">ESLint</a></li>
+</ul>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Reference
+
+I've learned the concepts of this project using the tuturial of javascript mastery on <a href='https://www.youtube.com/watch?v=pUNSHPyVryU' target="_blank">youtube</a>.
+
+## Author
+
+<ul>
+<li>Levy Monteiro - <a href="https://github.com/LevyMonteiro" target="_blank">GitHub</a></li>
+</ul>
